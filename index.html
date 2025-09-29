@@ -9,14 +9,35 @@
       --main-purple: #6a0dad;
       --accent-teal: #00cfcf;
       --light-bg: #f9f9f9;
+      --dark-text: #333;
+      --light-white: #fff;
     }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #fff;
-      color: #333;
+      background: var(--light-white);
+      color: var(--dark-text);
       scroll-behavior: smooth;
     }
+    /* Top bar with contact info */
+    .top-bar {
+      background: var(--main-purple);
+      color: white;
+      font-size: 0.9rem;
+      padding: 5px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar .contact-info {
+      display: flex;
+      gap: 20px;
+    }
+    .top-bar a {
+      color: white;
+      text-decoration: none;
+    }
+
     /* Navbar */
     nav {
       position: sticky;
@@ -37,9 +58,10 @@
       display: flex;
       margin: 0;
       padding: 0;
+      gap: 15px;
     }
     nav ul li {
-      margin: 0 10px;
+      position: relative;
     }
     nav ul li a {
       color: white;
@@ -51,37 +73,46 @@
       color: var(--accent-teal);
     }
 
+    /* Hero / Header */
     header {
       background: var(--main-purple);
       color: white;
-      padding: 80px 20px 60px 20px;
+      padding: 100px 20px 80px;
       text-align: center;
     }
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 20px;
       animation: fadeInDown 1s ease;
     }
     header p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+      font-size: 1.25rem;
+      margin-bottom: 30px;
       animation: fadeIn 1.2s ease;
     }
-    header a {
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .hero-buttons a, .hero-buttons button {
       background: var(--accent-teal);
       color: white;
       padding: 12px 24px;
+      border: none;
       border-radius: 6px;
       text-decoration: none;
+      font-size: 1rem;
       font-weight: bold;
       transition: background 0.3s, transform 0.2s;
-      display: inline-block;
+      cursor: pointer;
     }
-    header a:hover {
+    .hero-buttons a:hover, .hero-buttons button:hover {
       background: #00b3b3;
       transform: scale(1.05);
     }
 
+    /* Sections */
     section {
       padding: 60px 20px;
       max-width: 1000px;
@@ -94,8 +125,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    .services, .why-us {
+    .services, .why-us, .testimonials {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
@@ -116,6 +146,7 @@
       color: var(--main-purple);
     }
 
+    /* Enquiry / Form */
     form {
       background: var(--light-bg);
       padding: 30px;
@@ -143,6 +174,26 @@
       transform: scale(1.03);
     }
 
+    /* Sticky Call Us / Hot Bar */
+    .call-us-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-teal);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 1000;
+    }
+    .call-us-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+    }
+
     footer {
       background: var(--main-purple);
       color: white;
@@ -152,90 +203,122 @@
 
     /* Animations */
     @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="contact-info">
+      <span>📞 020 1234 5678</span>
+      <span>✉️ info@londonplumbingexperts.co.uk</span>
+    </div>
+    <div class="hours">
+      <span>Open: 24/7 Emergency Service</span>
+    </div>
+  </div>
+
   <!-- Navbar -->
   <nav>
     <div>
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/water-tap.png" alt="Plumbing Logo">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/water-tap.png" alt="Logo">
     </div>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#why">Why Us</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#enquiry">Enquiry</a></li>
+      <li><a href="#services">Our Services</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#enquiry">Contact / Quote</a></li>
     </ul>
   </nav>
 
+  <!-- Hero / Header -->
   <header>
-    <h1>London Plumbing Experts</h1>
-    <p>Fast, reliable, and affordable plumbing services across London.</p>
-    <a href="#enquiry">Get a Free Quote</a>
+    <h1>Fast & Reliable Plumbing in London</h1>
+    <p>24/7 emergency plumbing • Gas safe engineers • Free quotes</p>
+    <div class="hero-buttons">
+      <a href="#enquiry">Get a Free Quote</a>
+      <button onclick="window.location='tel:02012345678';">Call Now</button>
+    </div>
   </header>
 
   <section id="why">
-    <h2 style="text-align:center; color:var(--main-purple);">Why Choose Us?</h2>
+    <h2 style="text-align:center; color: var(--main-purple);">Why Choose Us?</h2>
     <div class="why-us">
       <div class="card">
-        <h3>🚿 24/7 Emergency Callouts</h3>
-        <p>We’re available around the clock for any urgent plumbing needs.</p>
+        <h3>24/7 Emergency Callouts</h3>
+        <p>Always ready to help when you need us most.</p>
       </div>
       <div class="card">
-        <h3>🔧 Experienced Team</h3>
-        <p>Our licensed plumbers have 20+ years of combined experience.</p>
+        <h3>Gas Safe Registered</h3>
+        <p>Fully licensed and insured for your safety.</p>
       </div>
       <div class="card">
-        <h3>💷 Affordable Pricing</h3>
-        <p>No hidden costs – upfront, transparent pricing every time.</p>
+        <h3>Transparent Pricing</h3>
+        <p>No surprises. You get the price up front.</p>
       </div>
     </div>
   </section>
 
   <section id="services">
-    <h2 style="text-align:center; color:var(--main-purple);">Our Services</h2>
+    <h2 style="text-align:center; color: var(--main-purple);">Our Services</h2>
     <div class="services">
       <div class="card">
-        <h3>Bathroom Installations</h3>
-        <p>Modern, stylish bathrooms fitted to perfection.</p>
+        <h3>Sinks & Drains</h3>
+        <p>Clearing blockages, repairs and maintenance for your pipes and drains.</p>
       </div>
       <div class="card">
-        <h3>Boiler Repairs</h3>
-        <p>Stay warm with fast boiler diagnostics and repair.</p>
+        <h3>Pipes & Leak Detection</h3>
+        <p>Spotting, repairing & replacing pipes to avoid costly damage.</p>
       </div>
       <div class="card">
-        <h3>Leak Detection</h3>
-        <p>Find and fix hidden leaks before they cause damage.</p>
+        <h3>Heating & Gas Work</h3>
+        <p>Certified heating and gas services for boilers and radiators.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2 style="text-align:center; color: var(--main-purple);">What Our Clients Say</h2>
+    <div class="testimonials">
+      <div class="card">
+        <p>“Jon fixed some plumbing issues that I couldn't handle on my own. He was professional, courteous and worked quickly.”</p>
+        <h4>— Mike T.</h4>
+      </div>
+      <div class="card">
+        <p>“Adam showed up on time, did the job quickly, and was polite and professional. Would definitely use again.”</p>
+        <h4>— Shannon W.</h4>
       </div>
     </div>
   </section>
 
   <section id="enquiry">
-    <h2 style="text-align:center; color:var(--main-purple);">Request a Free Quote</h2>
+    <h2 style="text-align:center; color: var(--main-purple);">Request a Free Quote</h2>
     <!-- Replace YOUR_FORM_ID with your actual Formspree endpoint -->
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <input type="tel" name="phone" placeholder="Your Phone" required>
-      <textarea name="message" rows="5" placeholder="Tell us about your plumbing issue..." required></textarea>
+      <textarea name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
       <button type="submit">Submit Enquiry</button>
     </form>
   </section>
+
+  <a class="call-us-btn" href="tel:02012345678">Call Us Now</a>
 
   <footer>
     <p>© 2025 London Plumbing Experts | Serving all of London</p>
   </footer>
 
   <script>
-    // Fade-in effect on scroll
+    // Fade-in on scroll
     const sections = document.querySelectorAll('section');
     const revealOnScroll = () => {
       const triggerBottom = window.innerHeight * 0.85;
@@ -252,3 +335,4 @@
 
 </body>
 </html>
+
