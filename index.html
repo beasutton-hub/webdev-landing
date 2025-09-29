@@ -5,56 +5,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>London Plumbing Experts</title>
   <style>
+    :root {
+      --main-purple: #6a0dad;
+      --accent-teal: #00cfcf;
+      --light-bg: #f9f9f9;
+    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #fff;
       color: #333;
+      scroll-behavior: smooth;
     }
-    header {
-      background: purple;
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--main-purple);
       color: white;
-      padding: 60px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+    nav img {
+      height: 40px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 10px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: var(--accent-teal);
+    }
+
+    header {
+      background: var(--main-purple);
+      color: white;
+      padding: 80px 20px 60px 20px;
       text-align: center;
     }
     header h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
+      animation: fadeInDown 1s ease;
     }
     header p {
       font-size: 1.2rem;
       margin-bottom: 20px;
+      animation: fadeIn 1.2s ease;
     }
     header a {
-      background: white;
-      color: purple;
+      background: var(--accent-teal);
+      color: white;
       padding: 12px 24px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
     }
+    header a:hover {
+      background: #00b3b3;
+      transform: scale(1.05);
+    }
+
     section {
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
     }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .services, .why-us {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
     .card {
-      background: #f9f9f9;
+      background: var(--light-bg);
       border-radius: 10px;
       padding: 20px;
       text-align: center;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
     }
     .card h3 {
-      color: purple;
+      color: var(--main-purple);
     }
+
     form {
-      background: #f9f9f9;
+      background: var(--light-bg);
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -68,24 +131,50 @@
       font-size: 1rem;
     }
     form button {
-      background: purple;
+      background: var(--main-purple);
       color: white;
       border: none;
       cursor: pointer;
       font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
     }
     form button:hover {
-      background: #5a0e5a;
+      background: var(--accent-teal);
+      transform: scale(1.03);
     }
+
     footer {
-      background: purple;
+      background: var(--main-purple);
       color: white;
       text-align: center;
       padding: 20px;
     }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
   </style>
 </head>
 <body>
+
+  <!-- Navbar -->
+  <nav>
+    <div>
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/water-tap.png" alt="Plumbing Logo">
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#enquiry">Enquiry</a></li>
+    </ul>
+  </nav>
 
   <header>
     <h1>London Plumbing Experts</h1>
@@ -93,8 +182,8 @@
     <a href="#enquiry">Get a Free Quote</a>
   </header>
 
-  <section>
-    <h2 style="text-align:center; color:purple;">Why Choose Us?</h2>
+  <section id="why">
+    <h2 style="text-align:center; color:var(--main-purple);">Why Choose Us?</h2>
     <div class="why-us">
       <div class="card">
         <h3>🚿 24/7 Emergency Callouts</h3>
@@ -111,8 +200,8 @@
     </div>
   </section>
 
-  <section>
-    <h2 style="text-align:center; color:purple;">Our Services</h2>
+  <section id="services">
+    <h2 style="text-align:center; color:var(--main-purple);">Our Services</h2>
     <div class="services">
       <div class="card">
         <h3>Bathroom Installations</h3>
@@ -130,7 +219,7 @@
   </section>
 
   <section id="enquiry">
-    <h2 style="text-align:center; color:purple;">Request a Free Quote</h2>
+    <h2 style="text-align:center; color:var(--main-purple);">Request a Free Quote</h2>
     <!-- Replace YOUR_FORM_ID with your actual Formspree endpoint -->
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
@@ -145,6 +234,21 @@
     <p>© 2025 London Plumbing Experts | Serving all of London</p>
   </footer>
 
+  <script>
+    // Fade-in effect on scroll
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if(sectionTop < triggerBottom) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+
 </body>
 </html>
-
