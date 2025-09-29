@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>London Plumbing Experts</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    header {
+      background: purple;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    header a {
+      background: white;
+      color: purple;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .services, .why-us {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      color: purple;
+    }
+    form {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    form input, form textarea, form button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    form button {
+      background: purple;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    form button:hover {
+      background: #5a0e5a;
+    }
+    footer {
+      background: purple;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>London Plumbing Experts</h1>
+    <p>Fast, reliable, and affordable plumbing services across London.</p>
+    <a href="#enquiry">Get a Free Quote</a>
+  </header>
+
+  <section>
+    <h2 style="text-align:center; color:purple;">Why Choose Us?</h2>
+    <div class="why-us">
+      <div class="card">
+        <h3>🚿 24/7 Emergency Callouts</h3>
+        <p>We’re available around the clock for any urgent plumbing needs.</p>
+      </div>
+      <div class="card">
+        <h3>🔧 Experienced Team</h3>
+        <p>Our licensed plumbers have 20+ years of combined experience.</p>
+      </div>
+      <div class="card">
+        <h3>💷 Affordable Pricing</h3>
+        <p>No hidden costs – upfront, transparent pricing every time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; color:purple;">Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Bathroom Installations</h3>
+        <p>Modern, stylish bathrooms fitted to perfection.</p>
+      </div>
+      <div class="card">
+        <h3>Boiler Repairs</h3>
+        <p>Stay warm with fast boiler diagnostics and repair.</p>
+      </div>
+      <div class="card">
+        <h3>Leak Detection</h3>
+        <p>Find and fix hidden leaks before they cause damage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="enquiry">
+    <h2 style="text-align:center; color:purple;">Request a Free Quote</h2>
+    <!-- Replace YOUR_FORM_ID with your actual Formspree endpoint -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone" required>
+      <textarea name="message" rows="5" placeholder="Tell us about your plumbing issue..." required></textarea>
+      <button type="submit">Submit Enquiry</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 London Plumbing Experts | Serving all of London</p>
+  </footer>
+
+</body>
+</html>
+
